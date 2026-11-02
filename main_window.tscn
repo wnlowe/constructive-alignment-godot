@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://d21qdkjnevtff"]
+
+[ext_resource type="Script" uid="uid://doenuilcjqxgn" path="res://lesson_files.gd" id="1_n7l54"]
+
+[node name="Control" type="Control" unique_id=215707302]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container" type="VBoxContainer" parent="." unique_id=1330276381]
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 489.0
+
+[node name="title" type="Label" parent="container" unique_id=1727375997]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Constructive Alignment Builder"
+horizontal_alignment = 1
+
+[node name="title_line" type="HSeparator" parent="container" unique_id=630545704]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="container" unique_id=1760675492]
+layout_mode = 2
+current_tab = 0
+
+[node name="Overview" type="VBoxContainer" parent="container/TabContainer" unique_id=1169484825]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="course_container" type="HBoxContainer" parent="container/TabContainer/Overview" unique_id=1443233737]
+layout_mode = 2
+
+[node name="course_label" type="Label" parent="container/TabContainer/Overview/course_container" unique_id=1894097751]
+layout_mode = 2
+text = "Course Name:"
+
+[node name="course_text" type="LineEdit" parent="container/TabContainer/Overview/course_container" unique_id=1440513007]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="container/TabContainer/Overview" unique_id=1214889780]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="container/TabContainer/Overview/GridContainer" unique_id=452319199]
+layout_mode = 2
+text = "Session Date"
+
+[node name="Label2" type="Label" parent="container/TabContainer/Overview/GridContainer" unique_id=1698121044]
+layout_mode = 2
+text = "Lesson Plan"
+
+[node name="find_vault" type="HBoxContainer" parent="container/TabContainer/Overview" unique_id=919370756]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="container/TabContainer/Overview/find_vault" unique_id=952607636]
+layout_mode = 2
+text = "Vault Location"
+
+[node name="LineEdit" type="LineEdit" parent="container/TabContainer/Overview/find_vault" unique_id=2089965217]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="container/TabContainer/Overview/find_vault" unique_id=1958748497]
+layout_mode = 2
+text = "Find Vault"
+
+[node name="lesson_files" type="Label" parent="container/TabContainer/Overview" unique_id=874594720]
+layout_mode = 2
+script = ExtResource("1_n7l54")
+
+[node name="Overarching Guidance" type="VBoxContainer" parent="container/TabContainer" unique_id=646674686]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="mission_label" type="Label" parent="container/TabContainer/Overarching Guidance" unique_id=2083427153]
+layout_mode = 2
+text = "Mission Statement"
+
+[node name="mission_text" type="TextEdit" parent="container/TabContainer/Overarching Guidance" unique_id=945667094]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+placeholder_text = "Place mission statement here"
+wrap_mode = 1
+
+[node name="values_label" type="Label" parent="container/TabContainer/Overarching Guidance" unique_id=620615973]
+layout_mode = 2
+text = "Core Values"
+
+[node name="values_text" type="TextEdit" parent="container/TabContainer/Overarching Guidance" unique_id=1385611523]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+placeholder_text = "Place core values here"
+wrap_mode = 1
+
+[node name="principles_label" type="Label" parent="container/TabContainer/Overarching Guidance" unique_id=1736475116]
+layout_mode = 2
+text = "Guiding Principles"
+
+[node name="principles_text" type="TextEdit" parent="container/TabContainer/Overarching Guidance" unique_id=1711591577]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+placeholder_text = "Place guiding principles here"
+wrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=323765553]
+title = "Open a Directory"
+file_mode = 2
+access = 2
+
+[connection signal="pressed" from="container/TabContainer/Overview/find_vault/Button" to="FileDialog" method="popup_file_dialog"]
+[connection signal="dir_selected" from="FileDialog" to="container/TabContainer/Overview/find_vault/LineEdit" method="insert_text_at_caret"]
+[connection signal="dir_selected" from="FileDialog" to="container/TabContainer/Overview/lesson_files" method="set_files"]
