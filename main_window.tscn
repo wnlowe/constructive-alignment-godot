@@ -75,6 +75,25 @@ text = "Find Vault"
 layout_mode = 2
 script = ExtResource("1_n7l54")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="container/TabContainer/Overview" unique_id=212367643]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Hello World[/b]
+[i]another line[/i]
+[url=lowesounds.com]Website[/url]
+[ul]hello
+world
+[/ul]
+[table=3] [cell] hello [/cell]
+[cell] this [/cell]
+[cell] is [/cell]
+[cell] is [/cell]
+[cell] a [/cell]
+[cell] table [/cell]
+[/table]
+"
+fit_content = true
+
 [node name="Overarching Guidance" type="VBoxContainer" parent="container/TabContainer" unique_id=646674686]
 visible = false
 layout_mode = 2
@@ -116,5 +135,6 @@ file_mode = 2
 access = 2
 
 [connection signal="pressed" from="container/TabContainer/Overview/find_vault/Button" to="FileDialog" method="popup_file_dialog"]
+[connection signal="cleaned_text" from="container/TabContainer/Overview/lesson_files" to="container/TabContainer/Overview/RichTextLabel" method="append_text"]
 [connection signal="dir_selected" from="FileDialog" to="container/TabContainer/Overview/find_vault/LineEdit" method="insert_text_at_caret"]
 [connection signal="dir_selected" from="FileDialog" to="container/TabContainer/Overview/lesson_files" method="set_files"]
